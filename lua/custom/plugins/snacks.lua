@@ -13,6 +13,9 @@ return {
       },
       picker = {
         enabled = true,
+        layout = {
+          preset = 'telescope',
+        },
       },
       quickfile = { enabled = true },
       scope = { enabled = true },

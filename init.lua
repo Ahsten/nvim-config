@@ -379,9 +379,24 @@ require('lazy').setup({
         end,
       },
       { 'nvim-telescope/telescope-ui-select.nvim' },
-
-      -- Useful for getting pretty icons, but requires a Nerd Font.
-      { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+    },
+    opts = {
+      pickers = {
+        find_files = {
+          hidden = true,
+        },
+        git_files = {
+          hidden = true,
+        },
+      },
+      defaults = {
+        file_ignore_patterns = {
+          'node_modules/*',
+        },
+      },
+      extensions = {
+        fzf = {},
+      },
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that

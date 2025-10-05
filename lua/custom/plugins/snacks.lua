@@ -121,13 +121,6 @@ return {
         end,
         desc = 'LSP Workspace Symbols',
       },
-      {
-        '<leader>/',
-        function()
-          Snacks.picker.grep()
-        end,
-        desc = 'Grep',
-      },
     },
   },
 }

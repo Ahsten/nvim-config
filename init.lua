@@ -2,10 +2,6 @@
 -- ==                           EDITOR SETTINGS                            == --
 -- ========================================================================== --
 
--- Learn more about Neovim lua api
--- https://neovim.io/doc/user/lua-guide.html
--- https://vonheikemen.github.io/devlog/tools/build-your-first-lua-config-for-neovim/
-
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.ignorecase = true
@@ -36,7 +32,7 @@ vim.keymap.set({'n', 'x'}, 'gp', '"+p', {desc = 'Paste clipboard content'})
 -- commit, use the "plugin spec" form. See :help vim.pack
 
 vim.pack.add({
-  'https://github.com/savq/melange-nvim',
+  'https://github.com/folke/tokyonight.nvim',
   'https://github.com/folke/which-key.nvim',
   'https://github.com/folke/snacks.nvim',
   'https://github.com/VonHeikemen/ts-enable.nvim',
@@ -49,7 +45,7 @@ vim.pack.add({
 -- ==                         PLUGIN CONFIGURATION                         == --
 -- ========================================================================== --
 
-vim.cmd.colorscheme('melange')
+vim.cmd.colorscheme('tokyonight-moon')
 
 -- See :help MiniSurround.config
 require('mini.surround').setup({})

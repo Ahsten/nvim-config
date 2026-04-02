@@ -31,7 +31,7 @@ vim.keymap.set({ 'n', 'x' }, 'gp', '"+p', { desc = 'Paste clipboard content' })
 -- commit, use the "plugin spec" form. See :help vim.pack
 
 vim.pack.add({
-	'https://github.com/ellisonleao/gruvbox.nvim',
+	'https://github.com/savq/melange-nvim',
 	'https://github.com/folke/which-key.nvim',
 	'https://github.com/folke/snacks.nvim',
 	'https://github.com/neovim/nvim-lspconfig',
@@ -43,7 +43,7 @@ vim.pack.add({
 -- ==                         PLUGIN CONFIGURATION                         == --
 -- ========================================================================== --
 
-vim.cmd.colorscheme('gruvbox')
+vim.cmd.colorscheme('melange')
 
 -- See :help MiniSurround.config
 require('mini.surround').setup({})
@@ -91,7 +91,6 @@ require('mini.completion').setup({
 
 -- See :help which-key.nvim-which-key-setup
 require('which-key').setup({
-	preset = 'helix',
 	icons = {
 		mappings = false,
 		keys = {

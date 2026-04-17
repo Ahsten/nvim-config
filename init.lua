@@ -23,6 +23,17 @@ vim.keymap.set({ 'n', 'x' }, 'gy', '"+y', { desc = 'Copy to clipboard' })
 vim.keymap.set({ 'n', 'x' }, 'gp', '"+p', { desc = 'Paste clipboard content' })
 
 -- ========================================================================== --
+-- ==                               COMMANDS                               == --
+-- ========================================================================== --
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight on yank',
+  callback = function()
+    vim.highlight.on_yank({higroup = 'Visual', timeout = 200})
+  end,
+})
+
+-- ========================================================================== --
 -- ==                               PLUGINS                                == --
 -- ========================================================================== --
 
@@ -31,7 +42,7 @@ vim.keymap.set({ 'n', 'x' }, 'gp', '"+p', { desc = 'Paste clipboard content' })
 -- commit, use the "plugin spec" form. See :help vim.pack
 
 vim.pack.add({
-	'https://github.com/savq/melange-nvim',
+	'https://github.com/folke/tokyonight.nvim',
 	'https://github.com/folke/which-key.nvim',
 	'https://github.com/folke/snacks.nvim',
 	'https://github.com/neovim/nvim-lspconfig',
@@ -43,7 +54,7 @@ vim.pack.add({
 -- ==                         PLUGIN CONFIGURATION                         == --
 -- ========================================================================== --
 
-vim.cmd.colorscheme('melange')
+vim.cmd.colorscheme('tokyonight-night')
 
 -- See :help MiniSurround.config
 require('mini.surround').setup({})
@@ -147,5 +158,6 @@ vim.diagnostic.config({
 
 vim.lsp.enable({
 	"lua_ls",
-	"zls"
+	"ts_ls",
+	"zls",
 })

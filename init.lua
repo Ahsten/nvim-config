@@ -47,7 +47,6 @@ vim.pack.add({
 	'https://github.com/folke/snacks.nvim',
 	'https://github.com/neovim/nvim-lspconfig',
 	{ src = 'https://github.com/nvim-mini/mini.nvim',             version = 'main' },
-	{ src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' },
 })
 
 -- ========================================================================== --
@@ -118,17 +117,6 @@ require('which-key').add({
 	{ '<leader>b', group = 'Buffer' },
 })
 
--- Treesitter setup
--- NOTE: the list of supported parsers is in the documentation:
--- https://github.com/nvim-treesitter/nvim-treesitter/blob/main/SUPPORTED_LANGUAGES.md
-local ts_parsers = { 'lua', 'vim', 'vimdoc', 'c', 'query', 'zig' }
-
--- Try to update all parsers after a plugin update
-vim.api.nvim_create_autocmd('PackChanged', {
-	pattern = 'nvim-treesitter',
-	desc = 'Update treesitter parsers',
-	command = 'TSUpdate'
-})
 
 -- LSP setup
 vim.api.nvim_create_autocmd('LspAttach', {

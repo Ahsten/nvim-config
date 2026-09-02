@@ -4,6 +4,10 @@
       "rev": "2ef3db111181c5eef22a462aa0122349a6027f28",
       "src": "https://github.com/saghen/blink.cmp"
     },
+    "github-nvim-theme": {
+      "rev": "c106c9472154d6b2c74b74565616b877ae8ed31d",
+      "src": "https://github.com/projekt0n/github-nvim-theme"
+    },
     "gitsigns.nvim": {
       "rev": "dd3f588bacbeb041be6facf1742e42097f62165d",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
@@ -41,6 +45,10 @@
       "rev": "17a64464c27c1be605adca13dbe48f2f402fe107",
       "src": "https://github.com/miikanissi/modus-themes.nvim"
     },
+    "neovim": {
+      "rev": "ff483051a47e27d84bdef47703538df1ed9f4a47",
+      "src": "https://github.com/rose-pine/neovim"
+    },
     "nvim-lspconfig": {
       "rev": "16812abf0e8d8175155f26143a8504e8253e92b0",
       "src": "https://github.com/neovim/nvim-lspconfig"
@@ -64,6 +72,10 @@
     "srcery-vim": {
       "rev": "b6cfbe90d6506fbdfe525d35787b487a9a6febb9",
       "src": "https://github.com/srcery-colors/srcery-vim"
+    },
+    "studio98": {
+      "rev": "28041cc4b7b174e227607d3673b103df6347836e",
+      "src": "https://github.com/jnz/studio98"
     },
     "telescope.nvim": {
       "rev": "aa4ad82068176e9610034eedcf945289e90e5b0a",

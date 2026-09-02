@@ -5,7 +5,7 @@ vim.o.number = true
 vim.o.relativenumber = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
-vim.o.hlsearch = false
+vim.o.hlsearch = true
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
 vim.o.showmode = false
@@ -61,8 +61,14 @@ vim.pack.add({
 -- ========================================================================== --
 -- ==                         PLUGIN CONFIGURATION                         == --
 -- ========================================================================== --
-
-vim.cmd.colorscheme('tokyonight-night')
+require("gruvbox").setup({
+    overrides = {
+			Function = { fg = "#fabd2f"},
+			String = { fg = "#fe8019"},
+			Preproc = { fg = "#fb4934" },
+    }
+})
+vim.cmd.colorscheme('gruvbox')
 
 -- See :help MiniSurround.config
 require('mini.surround').setup({})
@@ -78,13 +84,31 @@ local Snacks = require('snacks')
 
 Snacks.setup({
 	explorer = { enabled = true, replace_netrw = true },
-	picker = { enabled = true },
+	picker = {
+		enabled = true,
+		layout = {
+  		reverse = true,
+			layout = {
+				box = "horizontal",
+				backdrop = false,
+				width = 0.5,
+				height = 0.6,
+				border = "none",
+				{
+					box = "vertical",
+					{ win = "list", title = " Results ", title_pos = "center", border = true },
+					{ win = "input", height = 1, border = true, title = "{title} {live} {flags}", title_pos = "center" },
+				},
+			},
+		},
+	},
 })
 
 vim.keymap.set("n", "<leader>fb", function() Snacks.picker.buffers() end, { desc = "Buffers" })
 vim.keymap.set("n", "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, { desc = "Find Config File" })
-vim.keymap.set("n", "<leader>ff", function() Snacks.picker.files() end, { desc = "Find Files" })
-vim.keymap.set("n", "<leader>/", function() Snacks.picker.grep() end, { desc = "Grep" })
+vim.keymap.set("n", "<leader>ff", function() Snacks.picker.files({ ignored = false}) end, { desc = "Find Files" })
+vim.keymap.set("n", "<leader>fh", function() Snacks.picker.help() end, { desc = "Find Help" })
+vim.keymap.set("n", "<leader>/", function() Snacks.picker.grep({ ignored = false }) end, { desc = "Grep" })
 vim.keymap.set("n", "<leader>fp", function() Snacks.picker.projects() end, { desc = "Projects" })
 vim.keymap.set("n", "<leader>r", function() Snacks.picker.resume() end, { desc = "Resume" })
 vim.keymap.set("n", "<leader>e", function() Snacks.picker.explorer() end, { desc = "Explorer" })
@@ -126,11 +150,15 @@ local lsp_servers = {
 		-- https://luals.github.io/wiki/settings/ | `:h nvim_get_runtime_file`
 		Lua = { workspace = { library = vim.api.nvim_get_runtime_file("lua", true) }, },
 	},
-	-- clangd = {},
+	clangd = {},
 	-- rust_analyzer = {},
-	-- gopls = {},
-	-- zls = {},
+	gopls = {},
+	zls = {},
 	ts_ls = {},
+	denols = {
+		root_markers = { "deno.json", "deno.jsonc" },
+		settings = {},
+	},
 }
 
 vim.pack.add({
@@ -175,5 +203,7 @@ vim.diagnostic.config({
 vim.lsp.enable({
 	"lua_ls",
 	"ts_ls",
-	-- "zls",
+	"zls",
+	"gopls",
+	"denols",
 })

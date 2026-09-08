@@ -23,6 +23,8 @@ vim.g.mapleader = vim.keycode('<Space>')
 vim.keymap.set({ 'n', 'x' }, 'gy', '"+y', { desc = 'Copy to clipboard' })
 vim.keymap.set({ 'n', 'x' }, 'gp', '"+p', { desc = 'Paste clipboard content' })
 
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+
 -- ========================================================================== --
 -- ==                               COMMANDS                               == --
 -- ========================================================================== --
@@ -86,21 +88,6 @@ Snacks.setup({
 	explorer = { enabled = true, replace_netrw = true },
 	picker = {
 		enabled = true,
-		layout = {
-  		reverse = true,
-			layout = {
-				box = "horizontal",
-				backdrop = false,
-				width = 0.5,
-				height = 0.6,
-				border = "none",
-				{
-					box = "vertical",
-					{ win = "list", title = " Results ", title_pos = "center", border = true },
-					{ win = "input", height = 1, border = true, title = "{title} {live} {flags}", title_pos = "center" },
-				},
-			},
-		},
 	},
 })
 
@@ -150,15 +137,15 @@ local lsp_servers = {
 		-- https://luals.github.io/wiki/settings/ | `:h nvim_get_runtime_file`
 		Lua = { workspace = { library = vim.api.nvim_get_runtime_file("lua", true) }, },
 	},
-	clangd = {},
+	-- clangd = {},
 	-- rust_analyzer = {},
-	gopls = {},
-	zls = {},
-	ts_ls = {},
-	denols = {
-		root_markers = { "deno.json", "deno.jsonc" },
-		settings = {},
-	},
+	-- gopls = {},
+	-- zls = {},
+	-- ts_ls = {},
+	-- denols = {
+	-- 	root_markers = { "deno.json", "deno.jsonc" },
+	-- 	settings = {},
+	-- },
 }
 
 vim.pack.add({
@@ -202,8 +189,8 @@ vim.diagnostic.config({
 
 vim.lsp.enable({
 	"lua_ls",
-	"ts_ls",
-	"zls",
-	"gopls",
-	"denols",
+	-- "ts_ls",
+	-- "zls",
+	-- "gopls",
+	-- "denols",
 })
